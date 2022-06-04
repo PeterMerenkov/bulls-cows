@@ -1,0 +1,1 @@
+insert into game (id, username, time, steps, isTimeLimit, isStepLimit, isWin) values (1, 'test', 2134, 10, false, false, true);
