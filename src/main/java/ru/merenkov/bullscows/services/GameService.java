@@ -53,4 +53,8 @@ public class GameService {
         }
         int cowsCounter = containsCounter - bullsCounter;
     }
+
+    public Game getGameById(Integer id) {
+        return gameJdbcRepo.findById(id);
+    }
 }
