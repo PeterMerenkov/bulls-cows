@@ -2,6 +2,7 @@ package ru.merenkov.bullscows.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.merenkov.bullscows.domains.Game;
 import ru.merenkov.bullscows.repos.GameJdbcRepo;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class GameService {
         this.gameJdbcRepo = gameJdbcRepo;
     }
 
-    public List<Integer> generateUniqueSeq() {
+    private List<Integer> generateUniqueSeq() {
         List<Integer> arr = new ArrayList<>(4);
 
         Random random = new Random();
@@ -33,4 +34,23 @@ public class GameService {
         return arr;
     }
 
+    public void game(List<Integer> uuuu) {
+
+        List<Integer> cccc = generateUniqueSeq();
+
+        int bullsCounter = 0;
+        for (int i = 0; i < 4; i++) {
+            if (cccc.get(i).equals(uuuu.get(i))) {
+                bullsCounter++;
+            }
+        }
+
+        int containsCounter = 0;
+        for (int i = 0; i < 4; i++) {
+            if (cccc.contains(uuuu.get(i))) {
+                containsCounter++;
+            }
+        }
+        int cowsCounter = containsCounter - bullsCounter;
+    }
 }
