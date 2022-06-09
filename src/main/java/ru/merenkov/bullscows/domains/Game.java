@@ -1,7 +1,7 @@
 package ru.merenkov.bullscows.domains;
 
 public class Game {
-    int id;
+    Long id;
     String username;
     long time;
     int steps;
@@ -12,7 +12,7 @@ public class Game {
     public Game() {
     }
 
-    public Game(int id,
+    public Game(Long id,
                 String username,
                 long time,
                 int steps,
@@ -28,11 +28,11 @@ public class Game {
         this.isWin = isWin;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
