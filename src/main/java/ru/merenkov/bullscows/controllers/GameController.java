@@ -16,6 +16,11 @@ public class GameController {
         this.gameService = gameService;
     }
 
+    @GetMapping
+    public String index() {
+        return "index";
+    }
+
     @GetMapping("{id}")
     public Game getGameInfo(@PathVariable("id") Integer id) {
         return gameService.getGameById(id);
