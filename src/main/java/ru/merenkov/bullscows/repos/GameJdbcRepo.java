@@ -12,17 +12,23 @@ import java.util.List;
 @Repository
 public class GameJdbcRepo {
     JdbcTemplate jdbcTemplate;
+    Long sequence;
 
     @Autowired
     public GameJdbcRepo(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+        this.sequence = 0L;
+    }
+
+    public Long getSequence() {
+        return sequence;
     }
 
     public List<Game> findAll() {
         return jdbcTemplate.query("select * from game", new GameRowMapper());
     }
 
-    public Game findById(int id) {
+    public Game findById(Long id) {
         return jdbcTemplate.queryForObject("select * from game where id=?", new Object[] { id },
                 new BeanPropertyRowMapper<Game>(Game.class));
     }
@@ -36,7 +42,7 @@ public class GameJdbcRepo {
     public int insert(Game game) {
         return jdbcTemplate.update("insert into game (id, username, time, steps, isTimeLimit, isStepLimit, isWin) "
                         + "values(?, ?, ?, ?, ?, ?, ?)",
-                game.getId(),
+                ++sequence,
                 game.getUsername(),
                 game.getTime(),
                 game.getSteps(),

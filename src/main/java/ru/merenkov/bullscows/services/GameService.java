@@ -2,6 +2,7 @@ package ru.merenkov.bullscows.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.merenkov.bullscows.domains.Game;
 import ru.merenkov.bullscows.repos.GameJdbcRepo;
 
@@ -54,7 +55,16 @@ public class GameService {
         int cowsCounter = containsCounter - bullsCounter;
     }
 
-    public Game getGameById(Integer id) {
+    public Game getGameById(Long id) {
         return gameJdbcRepo.findById(id);
+    }
+
+    @Transactional
+    public void createNewGame(Game game) {
+        gameJdbcRepo.insert(game);
+    }
+
+    public Long getLastId() {
+        return gameJdbcRepo.getSequence();
     }
 }

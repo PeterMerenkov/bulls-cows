@@ -10,7 +10,7 @@ public class GameRowMapper implements RowMapper<Game> {
     @Override
     public Game mapRow(ResultSet rs, int rowNum) throws SQLException {
         Game game = new Game();
-        game.setId(rs.getInt("id"));
+        game.setId(rs.getLong("id"));
         game.setUsername(rs.getString("username"));
         game.setTime(rs.getLong("time"));
         game.setSteps(rs.getInt("steps"));
