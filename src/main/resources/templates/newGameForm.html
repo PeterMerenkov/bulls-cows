@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:th="http://thymeleaf.org">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>New game</title>
@@ -7,7 +7,7 @@
     <body>
         <form th:method="POST" th:action="@{/new}" th:object="${game}" enctype="multipart/form-data">
             <label>Username:
-                <input type="text" th:field="${game.username}" value="0">
+                <input type="text" th:field="*{username}" value="0">
             </label>
             <label>Time limit:
                 <input type="checkbox" th:checked="*{isTimeLimit}">

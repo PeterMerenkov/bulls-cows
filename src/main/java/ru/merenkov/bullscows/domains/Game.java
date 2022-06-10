@@ -83,4 +83,17 @@ public class Game {
     public void setWin(boolean win) {
         isWin = win;
     }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", time=" + time +
+                ", steps=" + steps +
+                ", isTimeLimit=" + isTimeLimit +
+                ", isStepLimit=" + isStepLimit +
+                ", isWin=" + isWin +
+                '}';
+    }
 }
