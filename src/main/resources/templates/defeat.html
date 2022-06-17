@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Поражение</title>
+    </head>
+    <body>
+        <h1>Поражение!</h1>
+        <h2 th:text="'Загаданное число: ' + ${number}"></h2>
+        <h3>Статистика:</h3>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Время</th>
+                <th>Ходы</th>
+                <th>Ограничение по времени</th>
+                <th>Ограничение по ходам</th>
+                <th>Результат</th>
+            </tr>
+            <tr th:each="game : ${userGames}">
+                <td th:text="${game.id}"></td>
+                <td th:text="${time}"></td>
+                <td th:text="${game.stepsCount}"></td>
+                <td th:text="${game.isTimeLimit} ? 'Да' : 'Нет'"></td>
+                <td th:text="${game.isStepLimit} ? 'Да' : 'Нет'"></td>
+                <td th:text="${game.isWin} ? 'Победа' : 'Поражение'"></td>
+            </tr>
+        </table>
+        <form th:method="GET" th:action="@{/}" enctype="multipart/form-data">
+            <input type="submit" value="Повезет в другой раз!">
+        </form>
+    </body>
+</html>

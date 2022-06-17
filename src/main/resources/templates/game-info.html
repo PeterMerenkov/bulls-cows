@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="Игра + '  #' + ${id}"></title>
+    </head>
+    <body>
+        <h1 th:text="Игра + '  #' + ${id}"></h1>
+        <h3 th:text="'Имя пользователя: ' + ${game.username}"></h3>
+        <h3 th:text="'Ограничение по шагам: ' + (${game.isStepLimit} ? 'Да (' + ${stepLimit} + ' ходов)' : 'Нет')"></h3>
+        <h3 th:text="'Ограничение по времени: ' + (${game.isTimeLimit} ? 'Да' : 'Нет')"></h3>
+        <table>
+            <tr th:each="step : ${steps}">
+                <td th:text="'Ход ' + ${step.step} + '.'"></td>
+                <td th:text="${step.userNum} + ':'"></td>
+                <td th:text="'Быков: ' + ${step.bulls}"></td>
+                <td th:text="'Коров: ' + ${step.cows}"></td>
+            </tr>
+        </table>
+        <form th:method="POST" th:action="@{/game/} + ${id}" enctype="multipart/form-data">
+            <label>Ваше уникальное 4-х значное число:
+                <input type="text" th:field="${gameStep.userNum}" pattern="^(?!.*(.).*\1)\d{4}$" required>
+            </label>
+            <input type="submit" value="Сделать ход!">
+        </form>
+        <form th:method="GET" th:action="@{/defeat/} + ${id}" th:object="${game}">
+            <input type="submit" value="Сдаться!">
+        </form>
+    </body>
+</html>
