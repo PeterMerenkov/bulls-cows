@@ -48,6 +48,8 @@ public class GameController {
         model.addAttribute("stepLimit", GameService.STEP_LIMIT);
 
         if (game.isGameOver() && !game.isWin()) {
+            game.addStepTime(LocalTime.now());
+
             model.addAttribute("userGames", gameService.getGamesByUsername(game.getUsername()));
             model.addAttribute("number", game.getGameNumber());
             model.addAttribute("time", LocalTime.MIN.plusSeconds(game.getTime()).toString());
@@ -55,6 +57,8 @@ public class GameController {
         }
 
         if (game.isGameOver() && game.isWin()) {
+            game.addStepTime(LocalTime.now());
+
             model.addAttribute("userGames", gameService.getGamesByUsername(game.getUsername()));
             model.addAttribute("number", game.getGameNumber());
             model.addAttribute("time", LocalTime.MIN.plusSeconds(game.getTime()).toString());

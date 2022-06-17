@@ -83,8 +83,6 @@ public class GameService {
 
         game.addStepCount();
 
-        game.addStepTime(LocalTime.now());
-
         gameStep.setStep(game.getStepsCount());
 
         gameStep.setBulls(countBulls(game.getGameNumber(), gameStep.getUserNum()));
