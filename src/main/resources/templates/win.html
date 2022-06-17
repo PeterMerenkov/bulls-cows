@@ -3,11 +3,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Победа</title>
+        <link th:href="@{/styles/win-defeat.css}" rel="stylesheet">
     </head>
     <body>
-        <h1>Победа!</h1>
+        <h1>ПОБЕДА!</h1>
         <h2 th:text="'Загаданное число: ' + ${number}"></h2>
-        <h3>Статистика:</h3>
+        <h2>Статистика:</h2>
         <table>
             <tr>
                 <th>ID</th>
@@ -27,7 +28,7 @@
             </tr>
         </table>
         <form th:method="GET" th:action="@{/}" enctype="multipart/form-data">
-            <input type="submit" value="Ура!">
+            <input class="button" type="submit" value="Ура!">
         </form>
     </body>
 </html>

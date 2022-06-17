@@ -3,22 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>Новая игра</title>
+        <link th:href="@{/styles/new-game-form.css}" rel="stylesheet">
     </head>
     <body>
+        <h1>НОВАЯ ИГРА</h1>
         <form th:method="POST" th:action="@{/new}" th:object="${game}" enctype="multipart/form-data">
             <label>Имя пользователя:
-                <input type="text" th:field="*{username}" maxlength="32" required> <br>
-            </label>
-            <label>Ограничение по времени:
-                <input type="checkbox" th:field="*{isTimeLimit}">
+                <input type="text" th:field="*{username}" maxlength="19" required> <br>
             </label>
             <label> <span th:text="'Ограничение по шагам (' + ${stepLimit} + ' ходов): '"></span>
                 <input type="checkbox" th:field="*{isStepLimit}"><br>
             </label>
-            <input type="submit" value="Играть!">
+            <label>Ограничение по времени:
+                <input type="checkbox" th:field="*{isTimeLimit}"><br>
+            </label>
+            <input class="button" type="submit" value="Играть!">
         </form>
         <form th:method="GET" th:action="@{/}">
-            <input type="submit" value="Назад!">
+            <input class="button" type="submit" value="Назад!">
         </form>
     </body>
 </html>

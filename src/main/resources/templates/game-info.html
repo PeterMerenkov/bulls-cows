@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title th:text="Игра + '  #' + ${id}"></title>
+        <link th:href="@{/styles/game-info.css}" rel="stylesheet">
     </head>
     <body>
         <h1 th:text="Игра + '  #' + ${id}"></h1>
@@ -18,8 +19,8 @@
             </tr>
         </table>
         <form th:method="POST" th:action="@{/game/} + ${id}" enctype="multipart/form-data">
-            <label>Ваше уникальное 4-х значное число:
-                <input type="text" th:field="${gameStep.userNum}" pattern="^(?!.*(.).*\1)\d{4}$" required>
+            <label>
+                <input type="text" th:field="${gameStep.userNum}" placeholder="4-х значное число" autofocus pattern="^(?!.*(.).*\1)\d{4}$" required>
             </label>
             <input type="submit" value="Сделать ход!">
         </form>

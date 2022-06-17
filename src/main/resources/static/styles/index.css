@@ -1,0 +1,10 @@
+h1 {
+    text-align: center;
+}
+
+input {
+    width: 110px;
+    height: 30px;
+    margin: 0 auto;
+    display: block;
+}
